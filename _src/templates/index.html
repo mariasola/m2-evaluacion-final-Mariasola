@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ejercicio dos</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="icon" href="/tv-icon.png"/>
+    <title>Buscador de series</title>
+    <link rel="stylesheet" href="./assets/css/main.css">
 </head>
 <body class="page">
-    <input type="text" class="text">
-    <button class="btn">Busca</button>
-    <ul class="result"></ul>
-<script type="text/javascript" src="./main.js"></script>
+  <section class= "search">
+    <h1 class="search-title">Buscador de series</h1>
+    <form class="search-container">
+      <input type="text" class="search-input">
+      <input type="submit" class="search-button" value="Search">
+    </form>
+  </section>
+  <main class="main">
+    <section class="fav">
+      <h2 class="fav-title">Mis series favoritas</h2>
+      <ul class="fav-list"></ul>
+    </section>
+    <section class="series">
+      <div class="series-container"></div>
+    </section>
+  </main>
+<script type="text/javascript" src="./assets/js/main.js"></script>
+
 </body>
 
 </html>
