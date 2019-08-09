@@ -2,7 +2,7 @@
 const input = document.querySelector(".search-input");
 const btn = document.querySelector(".search-button");
 const result = document.querySelector(".series-container");
-const fav = document.querySelector(".fav-list");
+const fav = document.querySelector(".fav-choose");
 let favList = [];
 let list = [];
 
@@ -35,10 +35,12 @@ const paintSeries = arrShows => {
   for (let i = 0; i < arrShows.length; i++) {
     const nameData = arrShows[i].show.name;
     const imgData = arrShows[i].show.image;
+    const idData = arrShows[i].show.id;
 
     //Containers and classes
     const boxShow = document.createElement("div");
     boxShow.classList.add("show-container");
+    boxShow.setAttribute("data-id", idData);
     const nameShow = document.createElement("h4");
     nameShow.classList.add("name-show");
     const imgShow = document.createElement("img");
@@ -70,17 +72,19 @@ const clearFav = () => {
 const paintFav = arr => {
   clearFav();
 
-  const favList = document.createElement("li");
+  const favList = document.createElement("ul");
   favList.classList.add("fav-list");
   fav.appendChild(favList);
 
   for (let item of arr) {
     const favImgData = item.img;
     const favNameData = item.name;
+    const favIdData = item.id;
 
     //Containers and classes
     const favBoxShow = document.createElement("li");
     favBoxShow.classList.add("fav-box-show");
+    favBoxShow.setAttribute("data-id", favIdData);
     const favNameShow = document.createElement("h3");
     favNameShow.classList.add("fav-name-show");
     const favImgShow = document.createElement("img");
@@ -108,6 +112,7 @@ function deleteFav(e) {
 
   const img = parent.querySelector(".fav-img-show");
   const name = parent.querySelector(".fav-name-show");
+  const id = parent.querySelector(".data-id");
 
   const favImg = img.src;
   const favName = name.innerHTML;

@@ -1,15 +1,43 @@
 * {
   margin: 0;
+  background-color: rgb(43, 43, 43);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .search {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: lightgray;
   height: 70px;
+  margin: 15px;
+  color: white;
+  &-title {
+    color: rgb(130, 90, 130);
+    font-family: "Cabin Sketch", cursive;
+    font-size: 35px;
+  }
+  &-input {
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #fff;
+    color: #fff;
+    padding: 5px 0;
+    font-size: 18px;
+  }
+  &-button {
+    padding: 9px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 15px;
+    color: white;
+    background-color: rgb(130, 90, 130);
+    border-color: rgb(130, 90, 130);
+    text-transform: capitalize;
+  }
 }
 .main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px auto;
+  margin-top: 30px;
 }
 .series-container {
   display: flex;
@@ -23,36 +51,39 @@
   color: white;
   cursor: pointer;
 }
-.show-name {
+.name-show {
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   width: 200px;
   word-break: break-all;
+  background-color: transparent;
 }
 
 .fav-title {
   font-size: 20px;
   text-align: center;
+  color: white;
 }
 .fav-box-show {
   display: flex;
-  flex-wrap: wrap;
-  margin: 3px 0;
-  //   height: 80px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 15px;
 }
 .fav-img-show {
-  width: 40px;
+  width: 100px;
 }
 .fav-name-show {
   font-size: 14px;
-  display: flex;
-  align-items: center;
+  color: white;
 }
 .fav-delete {
-  height: 20px;
-  width: 20px;
-  background-color: red;
+  height: 10px;
+  width: 10px;
+  background: url(../images/close.png) no-repeat;
+  background-size: contain;
   cursor: pointer;
 }
 .fav-list {
