@@ -115,15 +115,21 @@ const paintFav = () => {
     favDelete.addEventListener("click", deleteFav);
   }
 
-  const favDeleteAll = document.querySelector(".fav-deleteAll-hidden");
+  const favDeleteAll = document.querySelector(".fav-deleteAll");
   if (favList.length > 1) {
-    favDeleteAll.classList.remove("fav-deleteAll-hidden");
+    favDeleteAll.classList.remove("hidden");
     favDeleteAll.classList.add("fav-deleteAll-show");
+  } else {
+    favDeleteAll.classList.add("hidden");
   }
   // si favlist tiene más de un elemento show sino hide
   favDeleteAll.addEventListener("click", deleteAll);
 };
 
+function deleteAll() {
+  favList = [];
+  paintFav();
+}
 //Delete from fav
 function deleteFav(e) {
   const trigger = e.currentTarget;
@@ -147,10 +153,6 @@ function deleteFav(e) {
   setFavsIntoLocalStorage();
   paintFav();
 }
-function deleteAll() {
-  favList = [];
-  paintFav();
-}
 //Pick series as fav
 const pickAsFav = e => {
   const trigger = e.currentTarget;
@@ -165,8 +167,6 @@ const pickAsFav = e => {
   const favId = id.innerHTML;
 
   const favObj = { img: favImg, name: favName, id: favId };
-
-  // favList.push(list[2]);
 
   if (trigger.classList.contains("fav-show")) {
     favList.push(favObj);
