@@ -11,6 +11,7 @@
   margin: 15px;
   color: white;
   &-title {
+    text-decoration: none;
     color: rgb(130, 90, 130);
     font-family: "Cabin Sketch", cursive;
     font-size: 45px;
@@ -33,6 +34,10 @@
     background-color: rgb(130, 90, 130);
     border-color: rgb(130, 90, 130);
     text-transform: uppercase;
+    &:hover {
+      background-color: gray;
+      border-color: gray;
+    }
   }
 }
 .main {
@@ -51,6 +56,8 @@
   background-color: rgb(130, 90, 130);
   color: white;
   cursor: pointer;
+  animation-name: box;
+  animation-duration: 2s;
 }
 .name-show {
   font-size: 16px;
@@ -104,8 +111,8 @@
   text-transform: uppercase;
   text-align: center;
   &:hover {
-    background-color: lightgray;
-    border-color: lightgray;
+    background-color: gray;
+    border-color: gray;
   }
 }
 .hidden {
@@ -118,4 +125,21 @@
 }
 .fav-show {
   background-color: grey;
+}
+
+@keyframes box {
+  0% {
+    height: 0px;
+    width: 0%;
+  }
+  10% {
+    height: 0px;
+    width: 200px;
+  }
+  40% {
+    height: 275px;
+  }
+  100% {
+    height: auto;
+  }
 }

@@ -130,6 +130,7 @@ function deleteAll() {
   favList = [];
   paintFav();
 }
+
 //Delete from fav
 function deleteFav(e) {
   const trigger = e.currentTarget;
