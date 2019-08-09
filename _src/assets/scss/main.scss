@@ -22,6 +22,7 @@
     color: #fff;
     padding: 5px 0;
     font-size: 18px;
+    text-transform: uppercase;
   }
   &-button {
     padding: 9px 12px;
@@ -31,7 +32,7 @@
     color: white;
     background-color: rgb(130, 90, 130);
     border-color: rgb(130, 90, 130);
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 }
 .main {
@@ -86,11 +87,29 @@
   display: none;
 }
 .fav-delete {
-  height: 10px;
-  width: 10px;
+  height: 15px;
+  width: 15px;
   background: url(../images/close.png) no-repeat;
   background-size: contain;
   cursor: pointer;
+}
+.fav-deleteAll-show {
+  padding: 9px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 15px 0 0 15px;
+  color: white;
+  background-color: rgb(130, 90, 130);
+  border-color: rgb(130, 90, 130);
+  text-transform: uppercase;
+  text-align: center;
+  &:hover {
+    background-color: lightgray;
+    border-color: lightgray;
+  }
+}
+.fav-deleteAll-hidden {
+  display: none;
 }
 .fav-list {
   list-style: none;

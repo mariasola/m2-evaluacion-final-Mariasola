@@ -10,8 +10,8 @@ let list = [];
 const getSavedFavsFromLocalStorage = JSON.parse(
   localStorage.getItem("userFavs")
 );
-const setFavsIntoLocalStorage = arr => {
-  localStorage.setItem("userFavs", JSON.stringify(arr));
+const setFavsIntoLocalStorage = () => {
+  localStorage.setItem("userFavs", JSON.stringify(favList));
 };
 
 //Get series from API
@@ -75,14 +75,14 @@ const clearFav = () => {
 };
 
 //Paint fav shows in DOM
-const paintFav = arr => {
+const paintFav = () => {
   clearFav();
 
-  const favList = document.createElement("ul");
-  favList.classList.add("fav-list");
-  fav.appendChild(favList);
+  const favListElement = document.createElement("ul");
+  favListElement.classList.add("fav-list");
+  fav.appendChild(favListElement);
 
-  for (let item of arr) {
+  for (let item of favList) {
     const favImgData = item.img;
     const favNameData = item.name;
     const favIdData = item.id;
@@ -104,7 +104,7 @@ const paintFav = arr => {
     const favNameContent = document.createTextNode(favNameData);
     favImgShow.src = favImgData;
 
-    favList.appendChild(favBoxShow);
+    favListElement.appendChild(favBoxShow);
     favBoxShow.appendChild(favImgShow);
     favBoxShow.appendChild(favNameShow);
     favBoxShow.appendChild(favIdShow);
@@ -114,6 +114,14 @@ const paintFav = arr => {
 
     favDelete.addEventListener("click", deleteFav);
   }
+
+  const favDeleteAll = document.querySelector(".fav-deleteAll-hidden");
+  if (favList.length > 1) {
+    favDeleteAll.classList.remove("fav-deleteAll-hidden");
+    favDeleteAll.classList.add("fav-deleteAll-show");
+  }
+  // si favlist tiene más de un elemento show sino hide
+  favDeleteAll.addEventListener("click", deleteAll);
 };
 
 //Delete from fav
@@ -136,10 +144,13 @@ function deleteFav(e) {
       favList.splice(i, 1);
     }
   }
-  setFavsIntoLocalStorage(favList);
-  paintFav(favList);
+  setFavsIntoLocalStorage();
+  paintFav();
 }
-
+function deleteAll() {
+  favList = [];
+  paintFav();
+}
 //Pick series as fav
 const pickAsFav = e => {
   const trigger = e.currentTarget;
@@ -160,14 +171,14 @@ const pickAsFav = e => {
   if (trigger.classList.contains("fav-show")) {
     favList.push(favObj);
   }
-  setFavsIntoLocalStorage(favList);
-  paintFav(favList);
+  setFavsIntoLocalStorage();
+  paintFav();
 };
 //Get from LocalStorage
 const getFromLocalStorage = () => {
   if (getSavedFavsFromLocalStorage !== null) {
     favList = getSavedFavsFromLocalStorage;
-    paintFav(getSavedFavsFromLocalStorage);
+    paintFav();
   } else {
     favList = [];
   }
