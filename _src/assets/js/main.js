@@ -40,11 +40,15 @@ const paintSeries = arrShows => {
     //Containers and classes
     const boxShow = document.createElement("div");
     boxShow.classList.add("show-container");
-    boxShow.setAttribute("data-id", idData);
+    // boxShow.setAttribute("data-id", idData);
     const nameShow = document.createElement("h4");
     nameShow.classList.add("name-show");
     const imgShow = document.createElement("img");
     imgShow.classList.add("img-show");
+    const idShow = document.createElement("p");
+    idShow.classList.add("id-show");
+
+    const idContent = document.createTextNode(idData);
 
     const nameContentinData = document.createTextNode(nameData);
     if (imgData === null) {
@@ -57,7 +61,9 @@ const paintSeries = arrShows => {
     result.appendChild(boxShow);
     boxShow.appendChild(imgShow);
     boxShow.appendChild(nameShow);
+    boxShow.appendChild(idShow);
     nameShow.appendChild(nameContentinData);
+    idShow.appendChild(idContent);
 
     boxShow.addEventListener("click", pickAsFav);
   }
@@ -84,22 +90,27 @@ const paintFav = arr => {
     //Containers and classes
     const favBoxShow = document.createElement("li");
     favBoxShow.classList.add("fav-box-show");
-    favBoxShow.setAttribute("data-id", favIdData);
+    // favBoxShow.setAttribute("data-id", favIdData);
     const favNameShow = document.createElement("h3");
     favNameShow.classList.add("fav-name-show");
     const favImgShow = document.createElement("img");
     favImgShow.classList.add("fav-img-show");
     const favDelete = document.createElement("div");
     favDelete.classList.add("fav-delete");
+    const favIdShow = document.createElement("div");
+    favIdShow.classList.add("fav-id-show");
 
+    const favIdContent = document.createTextNode(favIdData);
     const favNameContent = document.createTextNode(favNameData);
     favImgShow.src = favImgData;
 
     favList.appendChild(favBoxShow);
     favBoxShow.appendChild(favImgShow);
     favBoxShow.appendChild(favNameShow);
+    favBoxShow.appendChild(favIdShow);
     favBoxShow.appendChild(favDelete);
     favNameShow.appendChild(favNameContent);
+    favIdShow.appendChild(favIdContent);
 
     favDelete.addEventListener("click", deleteFav);
   }
@@ -112,16 +123,17 @@ function deleteFav(e) {
 
   const img = parent.querySelector(".fav-img-show");
   const name = parent.querySelector(".fav-name-show");
-  const id = parent.querySelector(".data-id");
+  const id = parent.querySelector(".fav-id-show");
 
   const favImg = img.src;
   const favName = name.innerHTML;
+  const favId = id.innerHTML;
 
-  const favObj = { img: favImg, name: favName };
+  const favObj = { img: favImg, name: favName, id: favId };
 
-  for (let fav of favList) {
-    if (fav === favObj) {
-      favList.splice(fav);
+  for (let i = 0; i < favList.length; i++) {
+    if (favList[i].id === favObj.id) {
+      favList.splice(i, 1);
     }
   }
   setFavsIntoLocalStorage(favList);
@@ -135,11 +147,13 @@ const pickAsFav = e => {
 
   const img = trigger.querySelector(".img-show");
   const name = trigger.querySelector(".name-show");
+  const id = trigger.querySelector(".id-show");
 
   const favImg = img.src;
   const favName = name.innerHTML;
+  const favId = id.innerHTML;
 
-  const favObj = { img: favImg, name: favName };
+  const favObj = { img: favImg, name: favName, id: favId };
 
   // favList.push(list[2]);
 

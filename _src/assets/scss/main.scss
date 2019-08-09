@@ -13,7 +13,7 @@
   &-title {
     color: rgb(130, 90, 130);
     font-family: "Cabin Sketch", cursive;
-    font-size: 35px;
+    font-size: 45px;
   }
   &-input {
     outline: 0;
@@ -59,6 +59,9 @@
   word-break: break-all;
   background-color: transparent;
 }
+.id-show {
+  display: none;
+}
 
 .fav-title {
   font-size: 20px;
@@ -78,6 +81,9 @@
 .fav-name-show {
   font-size: 14px;
   color: white;
+}
+.fav-id-show {
+  display: none;
 }
 .fav-delete {
   height: 10px;
